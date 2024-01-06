@@ -14,19 +14,20 @@ function loadCSV() {
     });
 }
 
+
 function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
-    // Nombre d'images par colonne
-    var imagesPercolumn = 6; // 3 petites, 2 moyennes, 1 grande
+    // Nombre d'images par ligne
+    var imagesPerRow = 6; // 3 petites, 2 moyennes, 1 grande
 
-    // Ajouter une nouvelle colonne pour chaque groupe d'imagesPercolumn
-    for (var i = 0; i < data.length; i += imagesPercolumn) {
-        var column = document.createElement('div');
-        column.classList.add('column');
+    // Ajouter une nouvelle ligne pour chaque groupe d'imagesPerRow
+    for (var i = 0; i < data.length; i += imagesPerRow) {
+        var row = document.createElement('div');
+        row.classList.add('image-row'); // Utilisation d'une classe 'image-row' pour chaque ligne
 
-        // Générer des images pour cette colonne
-        for (var j = i; j < i + imagesPercolumn && j < data.length; j++) {
+        // Générer des images pour cette ligne
+        for (var j = i; j < i + imagesPerRow && j < data.length; j++) {
             var item = data[j];
             if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
                 continue; // Ignorer cette entrée
@@ -34,20 +35,11 @@ function generateImages(data) {
 
             var imageSize = determineImageSize();
             var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
-            //var img = document.createElement('img');
-            img.src = item['Chemin de l\'image'];
-            
-            // Ajouter les tags à chaque image
-            var tags = item.Tags.split(',');
-            tags.forEach(function (tag) {
-                img.classList.add(tag.trim());
-            });
-
-            column.appendChild(img);
+            row.appendChild(img);
         }
 
-        // Ajouter la colonne à la galerie
-        galleryContainer.appendChild(column);
+        // Ajouter la ligne à la galerie
+        galleryContainer.appendChild(row);
     }
 
     // Réinitialiser les compteurs après avoir généré les images
