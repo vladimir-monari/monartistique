@@ -1,3 +1,8 @@
+// Variables globales pour les compteurs de taille d'image
+var smallCount = 0;
+var mediumCount = 0;
+var largeCount = 0;
+
 // Fonction pour charger le fichier CSV
 function loadCSV() {
     Papa.parse('images.csv', {
@@ -20,11 +25,6 @@ function generateImages(data) {
         var column = document.createElement('div');
         column.classList.add('column');
 
-        // Compteurs pour chaque taille d'image
-        var smallCount = 0;
-        var mediumCount = 0;
-        var largeCount = 0;
-
         // Générer des images pour cette colonne
         for (var j = i; j < i + imagesPerColumn && j < data.length; j++) {
             var item = data[j];
@@ -32,11 +32,8 @@ function generateImages(data) {
                 continue; // Ignorer cette entrée
             }
 
-            var imageSize = determineImageSize(smallCount, mediumCount, largeCount);
+            var imageSize = determineImageSize();
             var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
-
-            // Mettre à jour les compteurs de taille d'image
-            updateCounters(imageSize);
 
             // Ajouter les tags à chaque image
             var tags = item.Tags.split(',');
@@ -51,11 +48,14 @@ function generateImages(data) {
         galleryContainer.appendChild(column);
     }
 
+    // Réinitialiser les compteurs après avoir généré les images
+    resetCounters();
+
     // Initialize Masonry after images are generated
     initMasonry();
 }
 
-function determineImageSize(smallCount, mediumCount, largeCount) {
+function determineImageSize() {
     // Logique pour déterminer la taille de l'image en fonction des compteurs
     if (smallCount < 3) {
         return 'small';
@@ -66,15 +66,11 @@ function determineImageSize(smallCount, mediumCount, largeCount) {
     }
 }
 
-function updateCounters(imageSize) {
-    // Mettre à jour les compteurs de taille d'image
-    if (imageSize === 'small') {
-        smallCount++;
-    } else if (imageSize === 'medium') {
-        mediumCount++;
-    } else if (imageSize === 'large') {
-        largeCount++;
-    }
+function resetCounters() {
+    // Réinitialiser les compteurs de taille d'image
+    smallCount = 0;
+    mediumCount = 0;
+    largeCount = 0;
 }
 
 function createRandomSizeImage(src, size) {
