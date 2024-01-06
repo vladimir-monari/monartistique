@@ -17,16 +17,16 @@ function loadCSV() {
 function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
-    // Nombre d'images par ligne
-    var imagesPerrow = 6; // 3 petites, 2 moyennes, 1 grande
+    // Nombre d'images par colonne
+    var imagesPercolumn = 6; // 3 petites, 2 moyennes, 1 grande
 
-    // Ajouter une nouvelle ligne pour chaque groupe d'imagesPerrow
-    for (var i = 0; i < data.length; i += imagesPerrow) {
-        var row = document.createElement('div');
-        row.classList.add('row');
+    // Ajouter une nouvelle colonne pour chaque groupe d'imagesPercolumn
+    for (var i = 0; i < data.length; i += imagesPercolumn) {
+        var column = document.createElement('div');
+        column.classList.add('column');
 
-        // Générer des images pour cette ligne
-        for (var j = i; j < i + imagesPerrow && j < data.length; j++) {
+        // Générer des images pour cette colonne
+        for (var j = i; j < i + imagesPercolumn && j < data.length; j++) {
             var item = data[j];
             if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
                 continue; // Ignorer cette entrée
@@ -43,11 +43,11 @@ function generateImages(data) {
                 img.classList.add(tag.trim());
             });
 
-            row.appendChild(img);
+            column.appendChild(img);
         }
 
-        // Ajouter la ligne à la galerie
-        galleryContainer.appendChild(row);
+        // Ajouter la colonne à la galerie
+        galleryContainer.appendChild(column);
     }
 
     // Réinitialiser les compteurs après avoir généré les images
