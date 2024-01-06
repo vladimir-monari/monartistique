@@ -16,7 +16,11 @@ function generateImages(data) {
     imageContainer.className = 'image-container';
 
     data.forEach(function(item) {
-        var img = document.createElement('img');
+        
+        varif (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
+            return; // Ignorez cette entrée
+        }
+        img = document.createElement('img');
         img.src = item['Chemin de l\'image'];
         img.alt = item['Description de l\'image'];
         img.onclick = function() {
