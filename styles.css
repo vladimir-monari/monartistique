@@ -100,8 +100,12 @@ h2 {
 #gallery .image-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    gap: 1px;
     justify-content: center; /* Centrer les images horizontalement dans la grille */
+}
+
+#column{
+    width: 300px;
 }
 
 #gallery img {
