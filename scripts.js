@@ -47,3 +47,21 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+const galleryContainer = document.querySelector('.image-container');
+const imageSizes = ['small', 'medium', 'large'];
+
+function createRandomSizeImage(src) {
+    const img = document.createElement('img');
+    img.src = src;
+    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
+    img.classList.add('gallery-item', randomSize);
+    return img;
+}
+
+// Supposons que vous ayez un tableau d'URL d'images
+const imageSources = ['path/to/image1.jpg', 'path/to/image2.jpg', /* autres images... */];
+
+imageSources.forEach(src => {
+    const img = createRandomSizeImage(src);
+    galleryContainer.appendChild(img);
+});

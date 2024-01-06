@@ -66,6 +66,21 @@ h2 {
     transform: scale(1.05);
 }
 
+.gallery-item {
+    border-radius: 5px;
+    cursor: pointer; /* Changement du curseur pour indiquer la cliquabilité */
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+/* Classes pour différentes tailles */
+.small { width: 100px; }
+.medium { width: 200px; }
+.large { width: 300px; }
+
 #myModal {
     display: none;
     position: fixed;
