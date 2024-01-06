@@ -47,7 +47,7 @@ function initMasonry() {
     });
 
     // Lorsque toutes les images sont chargées (y compris celles générées par Masonry), ajustez la position du copyright et du footer
-    imagesLoaded(galleryContainer).always(function () {
+    imagesLoaded(galleryContainer, function () {
         adjustFooterPosition();
     });
 }
