@@ -1,4 +1,3 @@
-Copy code
 * {
     margin: 0;
     padding: 0;
@@ -77,18 +76,18 @@ h2 {
 }
 
 .gallery-item.small {
-    max-width: 100px;
+    flex: 0 0 100px; /* Largeur fixe pour les petites images */
 }
 
 .gallery-item.medium {
-    max-width: 150px;
+    flex: 0 0 150px; /* Largeur fixe pour les images moyennes */
 }
 
 .gallery-item.large {
-    max-width: 300px;
+    flex: 0 0 300px; /* Largeur fixe pour les grandes images */
 }
 
-.column{
+.column {
     width: 300px;
 }
 
@@ -132,7 +131,6 @@ img.gallery-item {
     position: static !important; /* ou 'relative', 'fixed', etc., selon vos besoins */
 }
 
-
 .close {
     position: absolute;
     top: 15px;
@@ -153,7 +151,8 @@ img.gallery-item {
     font-style: italic;
 }
 
-.special-font, .special-font2 {
+.special-font,
+.special-font2 {
     font-family: 'Pacifico', cursive;
     font-size: 2em; /* Ajustez la taille selon vos préférences */
 }
