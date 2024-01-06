@@ -50,6 +50,7 @@ h2 {
 
 .image-container {
     margin: 0 auto; /* Centre la mosaïque */
+    height: auto;
 }
 
 #gallery {
