@@ -73,12 +73,15 @@ function resetCounters() {
     largeCount = 0;
 }
 
-function createRandomSizeImage(src, size) {
+function createRandomSizeImage(src) {
     const img = document.createElement('img');
     img.src = src;
-    img.classList.add('gallery-item', size);
+    const imageSizes = ['small', 'medium', 'large'];
+    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
+    img.classList.add('gallery-item', randomSize);
     return img;
 }
+
 
 // Appel de la fonction pour charger le CSV et générer les images
 loadCSV();
