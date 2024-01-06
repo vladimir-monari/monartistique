@@ -183,3 +183,9 @@ footer {
 #container {
     position: relative;
 }
+
+.grid-item {
+    width: 33.33%; /* ou toute autre largeur, selon la conception de votre grille */
+    float: left; /* Nécessaire pour le positionnement */
+  }
+  

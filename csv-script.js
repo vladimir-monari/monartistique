@@ -35,32 +35,31 @@ function shuffleArray(array) {
 }
 
 function generateImages(data) {
-    var galleryContainer = document.querySelector('.image-container');
+    var galleryContainer = document.querySelector('.grid');
 
-    // Générer des images pour une seule ligne
-    var row = document.createElement('div');
-    row.classList.add('image-row'); // Utilisation d'une classe 'image-row' pour la ligne
-
-    for (var i = 0; i < data.length; i++) {
-        var item = data[i];
+    data.forEach(item => {
         if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
-            continue; // Ignorer cette entrée
+        return;
         }
 
-        var imageSize = determineImageSize();
-        var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
-        row.appendChild(img);
-    }
+        var img = createImageElement(item['Chemin de l\'image']);
+        galleryContainer.appendChild(img);
+    });
 
-    // Ajouter la ligne à la galerie
-    galleryContainer.appendChild(row);
-
-    // Réinitialiser les compteurs après avoir généré les images
-    resetCounters();
-
-    // Initialize Masonry after images are generated
-    initMasonry();
+    // Initialiser Masonry
+    new Masonry(galleryContainer, {
+        itemSelector: '.grid-item',
+        percentPosition: true
+    });
 }
+  
+function createImageElement(src) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.classList.add('grid-item'); // Classe pour les éléments de la grille
+    return img;
+}
+  
 
 function determineImageSize() {
     // Déterminer la taille de l'image en fonction des compteurs
