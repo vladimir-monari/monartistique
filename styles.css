@@ -111,6 +111,11 @@ img#modalImg {
     margin-top: 30px;
 }
 
+img.gallery-item {
+    position: static !important; /* ou 'relative', 'fixed', etc., selon vos besoins */
+}
+
+
 .close {
     position: absolute;
     top: 15px;
@@ -154,17 +159,11 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    position: absolute; /* Position absolue pour rester au bas de la page */
     bottom: 0;
     width: 100%;
+    z-index: 10;
 }
 
 #container {
     position: relative;
-}
-
-#footer {
-    position: absolute;
-    bottom: 0;
-    z-index: 10;
 }
