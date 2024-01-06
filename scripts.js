@@ -35,6 +35,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     // Initialize Masonry after generating images
     initMasonry();
+    // Fonction pour mettre à jour la hauteur du conteneur
+    function updateContainerHeight() {
+        var container = document.querySelector('.image-container');
+        var images = container.getElementsByTagName('img');
+        var totalHeight = 0;
+
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.position = 'relative'; // Temporairement pour le calcul
+            totalHeight += images[i].offsetHeight;
+            images[i].style.position = 'absolute'; // Revenir à la position absolue
+        }
+        container.style.height = totalHeight + 'px';
+    }
+
+    // Mise à jour de la hauteur après le chargement de toutes les images
+    const images = document.querySelectorAll('.image-container img');
+    let loadedImages = 0;
+    images.forEach(img => {
+        if (img.complete) {
+            loadedImages++;
+            if (loadedImages === images.length) {
+                updateContainerHeight();
+            }
+        } else {
+            img.addEventListener('load', () => {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    updateContainerHeight();
+                }
+            });
+        }
+    });
 });
 
 // Fonction pour initialiser Masonry
