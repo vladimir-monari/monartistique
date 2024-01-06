@@ -65,7 +65,7 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    width: 100%; /* Assurez-vous que les images occupent toute la largeur de la colonne */
+    width: 100%; /* Assurez-vous que les images occupent toute la largeur de la ligne */
     max-width: 300px; /* Ajustez la largeur maximale selon vos préférences */
 }
 
