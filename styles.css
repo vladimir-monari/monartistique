@@ -16,7 +16,7 @@ header {
     background-color: #444;
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 2% 0; /* Ajustement en pourcentage */
 }
 
 header h1 {
@@ -26,11 +26,11 @@ header h1 {
 
 main {
     width: 90%;
-    margin: 20px auto;
+    margin: 2% auto; /* Ajustement en pourcentage */
 }
 
 #about, #gallery {
-    margin-bottom: 40px;
+    margin-bottom: 4%; /* Ajustement en pourcentage */
     text-align: center;
 }
 
@@ -53,16 +53,16 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
-    max-width: 1000px; /* Ajustez la largeur maximale selon vos préférences */
+    max-width: 90%; /* Ajustez la largeur maximale selon vos préférences */
 }
 
 .gallery-item {
-    margin-bottom: 20px;
+    margin-bottom: 2%; /* Ajustement en pourcentage */
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    flex: 0 0 calc(33.33% - 20px); /* 33.33% pour un tiers de la largeur avec 20px d'espace entre les éléments */
-    max-width: calc(33.33% - 20px);
+    flex: 0 0 calc(33.33% - 2%); /* Ajustement en pourcentage */
+    max-width: calc(33.33% - 2%);
 }
 
 .gallery-item img {
@@ -76,26 +76,26 @@ h2 {
 }
 
 .gallery-item.small {
-    flex: 0 0 100px; /* Largeur fixe pour les petites images */
+    flex: 0 0 10%; /* Ajustement en pourcentage */
 }
 
 .gallery-item.medium {
-    flex: 0 0 150px; /* Largeur fixe pour les images moyennes */
+    flex: 0 0 15%; /* Ajustement en pourcentage */
 }
 
 .gallery-item.large {
-    flex: 0 0 300px; /* Largeur fixe pour les grandes images */
+    flex: 0 0 30%; /* Ajustement en pourcentage */
 }
 
 .column {
-    width: 300px;
+    width: 30%; /* Ajustement en pourcentage */
 }
 
 #gallery img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    cursor: pointer; /* Changement du curseur pour indiquer la cliquabilité */
+    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
@@ -115,7 +115,7 @@ h2 {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 70%; /* Ajustement en pourcentage */
 }
 
 .modal-content img {
@@ -124,27 +124,27 @@ h2 {
 }
 
 img#modalImg {
-    margin-top: 30px;
+    margin-top: 3%; /* Ajustement en pourcentage */
 }
 
 img.gallery-item {
-    position: static !important; /* ou 'relative', 'fixed', etc., selon vos besoins */
+    position: static !important;
 }
 
 .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    font-size: 40px;
+    top: 1.5%; /* Ajustement en pourcentage */
+    right: 3.5%; /* Ajustement en pourcentage */
+    font-size: 4%; /* Ajustement en pourcentage */
     font-weight: bold;
     color: white;
     cursor: pointer;
 }
 
 #copyright {
-    margin-top: 40px;
-    margin-bottom: 20px; /* Ajout de la marge basse */
-    padding: 20px;
+    margin-top: 4%; /* Ajustement en pourcentage */
+    margin-bottom: 2%; /* Ajustement en pourcentage */
+    padding: 2%;
     background-color: rgba(255, 255, 255, 0.24);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
     text-align: center;
@@ -154,7 +154,7 @@ img.gallery-item {
 .special-font,
 .special-font2 {
     font-family: 'Pacifico', cursive;
-    font-size: 2em; /* Ajustez la taille selon vos préférences */
+    font-size: 2em;
 }
 
 .special-font {
@@ -174,7 +174,7 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 1%; /* Ajustement en pourcentage */
     bottom: 0;
     width: 100%;
     z-index: 10;
