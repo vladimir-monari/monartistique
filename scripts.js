@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Mise à jour de la hauteur après le chargement de toutes les images
-    const images = document.querySelectorAll('.image-container img');
     let loadedImages = 0;
     images.forEach(img => {
         if (img.complete) {
