@@ -97,6 +97,20 @@ h2 {
     max-height: 300px;
 }
 
+#gallery .image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    justify-content: center; /* Centrer les images horizontalement dans la grille */
+}
+
+#gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer; /* Changement du curseur pour indiquer la cliquabilité */
+    transition: transform 0.3s ease;
+}
 
 #myModal {
     display: none;
