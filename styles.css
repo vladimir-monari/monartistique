@@ -104,7 +104,44 @@ h2 {
     justify-content: center; /* Centrer les images horizontalement dans la grille */
 }
 
-#column{
+
+.image-row {
+    display: flex; /* Aligner les images horizontalement dans chaque ligne */
+    justify-content: space-around; /* Espacement entre les images */
+    margin-bottom: 20px; /* Espace entre les lignes */
+}
+
+.gallery-item {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 100%; /* Assurer que les images ne dépassent pas leur conteneur */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item.small {
+    flex: 0 0 33%; /* Occuper environ un tiers de la largeur de la ligne */
+}
+
+.gallery-item.medium {
+    flex: 0 0 50%; /* Occuper environ la moitié de la largeur de la ligne */
+}
+
+.gallery-item.large {
+    flex: 0 0 100%; /* Occuper toute la largeur de la ligne */
+}
+
+
+.column{
     width: 300px;
 }
 
