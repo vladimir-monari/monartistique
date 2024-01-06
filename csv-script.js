@@ -3,15 +3,35 @@ var smallCount = 0;
 var mediumCount = 0;
 var largeCount = 0;
 
-// Fonction pour charger le fichier CSV
 function loadCSV() {
     Papa.parse('images.csv', {
         download: true,
         header: true,
         complete: function(results) {
+            shuffleArray(results.data); // Mélanger les données
             generateImages(results.data);
         }
     });
+}
+
+// Fonction de mélange de Fisher-Yates (Knuth Shuffle)
+function shuffleArray(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // Tant qu'il reste des éléments à mélanger...
+    while (0 !== currentIndex) {
+
+        // Prendre un élément restant...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // Et l'échanger avec l'élément actuel.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
 }
 
 
