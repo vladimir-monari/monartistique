@@ -80,7 +80,7 @@ h2 {
 }
 
 /* Classes pour différentes tailles */
-.small { max-width: 200; } /* Ajustez la largeur maximale selon vos préférences */
+.small { max-width: 200px; } /* Ajustez la largeur maximale selon vos préférences */
 .medium { max-width: 400px; }
 .large { max-width: 600px; }
 
