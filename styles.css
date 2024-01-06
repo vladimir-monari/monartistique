@@ -158,3 +158,13 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+#container {
+    position: relative;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+}
