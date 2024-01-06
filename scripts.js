@@ -76,7 +76,10 @@ function initMasonry() {
         columnWidth: '.gallery-sizer',
         percentPosition: true
     });
-
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+    });
     // Lorsque toutes les images sont chargées (y compris celles générées par Masonry), ajustez la position du copyright et du footer
     imagesLoaded(galleryContainer, function () {
         adjustFooterPosition();
