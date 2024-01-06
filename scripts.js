@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Masonry
+    initMasonry();
+
     const images = document.querySelectorAll('.image-container img');
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -33,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
         tas.style.fontFamily = policeAleatoire;
         tas.style.fontSize = `${tailleAleatoire}px`;
     });
-    // Initialize Masonry on page load
-    initMasonry();
 });
 
 // Fonction pour initialiser Masonry
@@ -57,15 +58,4 @@ function openModal(imageSrc) {
 function closeModal() {
     var modal = document.getElementById('myModal');
     modal.style.display = "none";
-}
-
-const galleryContainer = document.querySelector('.image-container');
-const imageSizes = ['small', 'medium', 'large'];
-
-function createRandomSizeImage(src) {
-    const img = document.createElement('img');
-    img.src = src;
-    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
-    img.classList.add('gallery-item', randomSize);
-    return img;
 }

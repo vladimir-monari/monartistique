@@ -5,8 +5,6 @@ function loadCSV() {
         header: true,
         complete: function(results) {
             generateImages(results.data);
-            // Initialize Masonry after images are generated
-            initMasonry();
         }
     });
 }
@@ -34,6 +32,9 @@ function generateImages(data) {
 
         galleryContainer.appendChild(img);
     });
+
+    // Initialize Masonry after images are generated
+    initMasonry();
 }
 
 function createRandomSizeImage(src) {
@@ -47,13 +48,3 @@ function createRandomSizeImage(src) {
 
 // Appel de la fonction pour charger le CSV et générer les images
 loadCSV();
-
-// Fonction pour initialiser Masonry
-function initMasonry() {
-    var galleryContainer = document.querySelector('.image-container');
-    var masonry = new Masonry(galleryContainer, {
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-sizer',
-        percentPosition: true
-    });
-}
