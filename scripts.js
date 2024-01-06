@@ -72,10 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
 // Fonction pour initialiser Masonry
 function initMasonry() {
     var galleryContainer = document.querySelector('.image-container');
-    var $grid = new Masonry(galleryContainer, {
-        itemSelector: '.gallery-item',
-        columnWidth: '.gallery-sizer',
-        percentPosition: true
+    var grid = document.querySelector('.image-container');
+    var masonry = new Masonry(grid, {
+    itemSelector: '.gallery-item',
+    columnWidth: '.grid-sizer',
+    fitWidth: true, // Activez l'ajustement automatique de la largeur
+    percentPosition: true
     });
     // layout Masonry after each image loads
     imagesLoaded(galleryContainer).on('progress', function () {
