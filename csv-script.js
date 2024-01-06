@@ -25,7 +25,7 @@ function generateImages(data) {
         imageContainer.appendChild(img);
 
         // Ajouter les tags à chaque image
-        var tags = item.Tags.split(',');
+        var tags = item.Tags.split('-');
         tags.forEach(function(tag) {
             img.classList.add(tag.trim());
         });
