@@ -19,7 +19,7 @@ function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
     // Nombre d'images par ligne
-    var imagesPerRow = 6; // 3 petites, 2 moyennes, 1 grande
+    var imagesPerRow = 12; // 3 petites, 2 moyennes, 1 grande
 
     // Ajouter une nouvelle ligne pour chaque groupe d'imagesPerRow
     for (var i = 0; i < data.length; i += imagesPerRow) {
