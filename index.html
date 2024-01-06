@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonarTistique.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Les Créations de Claudio Monari</h1>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>Bienvenue sur <span class="special-font">Monar</span><span class="special-font2">T</span><span class="special-font">i</span><span class="special-font2">stique</span></h2>
+            <div class="centered-container">
+                <p class="intro-text">
+                    Bienvenue sur mon site. <br>
+                    Je m'appelle <span class="highlight">Claudio Monari</span>, un artiste passionné. Mon parcours artistique a commencé dès mon adolescence, d'abord dans la maroquinerie puis la bijouterie.<br>
+                    Aujourd'hui retraité, la peinture me permet d'explorer divers styles, allant de l'<span class="highlight">abstrait</span> au <span class="highlight">réaliste</span>. <br>
+                    Inspiré par des tableaux existants et des photographies, chaque création que je partage ici est le résultat de plusieurs heures dédiées à cette nouvelle activité. <br>
+                    Au fil des toiles, je m'efforce de capturer la beauté qui m'entoure, en mettant l'accent sur la <span class="highlight">paix</span> et le <span class="highlight">respect de la nature</span>. <br>
+                    Ma philosophie, exprimée à travers mes œuvres, se résume dans une phrase qui guide mon chemin artistique : <br>
+                    "<span class="highlight">Il n'y a pas de problèmes, que des solutions</span>."<br>
+                    J'invite chacun à explorer ce voyage visuel, où la <span class="highlight">couleur</span>, la <span class="highlight">forme</span> et l'<span class="highlight">émotion</span> se rencontrent pour créer un univers unique.<br>
+                    Vous avez également la possibilité d'acquérir l'une de mes créations, si l'une d'entre elles résonne en vous. <br>
+                    Merci de partager cette aventure artistique avec moi.
+                </p>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Galerie d'Art</h2>
+            <div class="image-container">
+                <!-- Les images seront générées ici par le script JavaScript -->
+            </div>
+        
+            <!-- Modal pour afficher l'image agrandie -->
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImg">
+            </div>
+        </section>
+        
+
+        <div id="copyright">
+            <p>Aucune reproduction, même partielle, autres que celles prévues à l'article L 122-5 du code de la propriété intellectuelle, ne peut être faite de ce site sans l'autorisation expresse de l'auteur.</p>
+            <p>Ce site internet n'utilise aucun cookie et ne conserve aucune donnée personnelle.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p id="copyright">&copy; 2024 Monari Claudio</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="csv-script.js"></script>
+</body>
+</html>
