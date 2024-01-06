@@ -33,7 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
         tas.style.fontFamily = policeAleatoire;
         tas.style.fontSize = `${tailleAleatoire}px`;
     });
+    // Initialize Masonry on page load
+    initMasonry();
 });
+
+// Fonction pour initialiser Masonry
+function initMasonry() {
+    var galleryContainer = document.querySelector('.image-container');
+    var masonry = new Masonry(galleryContainer, {
+        itemSelector: '.gallery-item',
+        columnWidth: '.gallery-sizer',
+        percentPosition: true
+    });
+}
 
 function openModal(imageSrc) {
     var modal = document.getElementById('myModal');
