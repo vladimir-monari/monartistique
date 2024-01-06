@@ -72,6 +72,24 @@ function initMasonry() {
     imagesLoaded(grid).on('progress', function() {
         msnry.layout();
     });
+
+    // Lorsque toutes les images sont chargées (y compris celles générées par Masonry), ajustez la position du copyright et du footer
+    imagesLoaded(galleryContainer, function () {
+        adjustFooterPosition();
+    });
+}
+
+// Fonction pour ajuster la position du copyright et du footer
+function adjustFooterPosition() {
+    var copyright = document.getElementById('copyright');
+    var footer = document.querySelector('footer');
+    var galleryContainer = document.querySelector('.image-container');
+
+    // Obtenez la hauteur combinée du copyright et du footer
+    var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
+
+    // Ajoutez cette hauteur comme marge au bas du conteneur principal
+    document.getElementById('container').style.marginBottom = combinedHeight + 'px';
 }
 
 // Appel de la fonction pour charger le CSV et générer les images
