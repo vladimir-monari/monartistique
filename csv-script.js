@@ -1,8 +1,3 @@
-// Variables globales pour les compteurs de taille d'image
-var smallCount = 0;
-var mediumCount = 0;
-var largeCount = 0;
-
 function loadCSV() {
     Papa.parse('images.csv', {
         download: true,
@@ -35,64 +30,33 @@ function shuffleArray(array) {
 }
 
 function generateImages(data) {
-    var galleryContainer = document.querySelector('.grid');
+    var galleryContainer = document.querySelector('.image-container');
+
+    // Vider le conteneur avant d'ajouter de nouvelles images
+    galleryContainer.innerHTML = '';
 
     data.forEach(item => {
         if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
-        return;
+            return;
         }
 
-        var img = createImageElement(item['Chemin de l\'image']);
+        var img = document.createElement('img');
+        img.src = item['Chemin de l\'image'];
+        img.alt = item['Nom de l\'image'];
+        img.classList.add('gallery-item');
+
         galleryContainer.appendChild(img);
     });
 
-    // Initialiser Masonry
-    new Masonry(galleryContainer, {
-        itemSelector: '.grid-item',
-        percentPosition: true
+    // Initialisation de Masonry après le chargement des images
+    imagesLoaded(galleryContainer, function() {
+        new Masonry(galleryContainer, {
+            itemSelector: '.gallery-item',
+            percentPosition: true,
+            columnWidth: '.grid-sizer',
+            fitWidth: true
+        });
     });
-}
-  
-function createImageElement(src) {
-    const img = document.createElement('img');
-    img.src = src;
-    img.classList.add('grid-item'); // Classe pour les éléments de la grille
-    return img;
-}
-  
-
-function determineImageSize() {
-    // Déterminer la taille de l'image en fonction des compteurs
-    // et continuer le cycle
-    if (smallCount < 3) {
-        smallCount++;
-        return 'small';
-    } else if (mediumCount < 2) {
-        mediumCount++;
-        return 'medium';
-    } else {
-        largeCount++;
-        
-        // Réinitialiser les compteurs si tous les types ont été assignés
-        if (largeCount >= 1) {
-            resetCounters();
-        }
-        return 'large';
-    }
-}
-
-function resetCounters() {
-    smallCount = 0;
-    mediumCount = 0;
-    largeCount = 0;
-}
-
-
-function createRandomSizeImage(src, size) {
-    const img = document.createElement('img');
-    img.src = src;
-    img.classList.add('gallery-item', size);
-    return img;
 }
 
 // Appel de la fonction pour charger le CSV et générer les images
