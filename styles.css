@@ -86,15 +86,15 @@ h2 {
 }
 
 .gallery-item.small {
-    max-height: 100px;
+    max-width: 100px;
 }
 
 .gallery-item.medium {
-    max-height: 150px;
+    max-width: 150px;
 }
 
 .gallery-item.large {
-    max-height: 300px;
+    max-width: 300px;
 }
 
 #gallery .image-container {
