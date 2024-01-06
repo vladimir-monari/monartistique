@@ -58,10 +58,13 @@ function generateImages(data) {
 function determineImageSize() {
     // Logique pour déterminer la taille de l'image en fonction des compteurs
     if (smallCount < 3) {
+        smallCount++;
         return 'small';
     } else if (mediumCount < 2) {
+        mediumCount++;
         return 'medium';
     } else if (largeCount < 1) {
+        largeCount++;
         return 'large';
     }
 }
@@ -73,15 +76,12 @@ function resetCounters() {
     largeCount = 0;
 }
 
-function createRandomSizeImage(src) {
+function createRandomSizeImage(src, size) {
     const img = document.createElement('img');
     img.src = src;
-    const imageSizes = ['small', 'medium', 'large'];
-    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
-    img.classList.add('gallery-item', randomSize);
+    img.classList.add('gallery-item', size);
     return img;
 }
-
 
 // Appel de la fonction pour charger le CSV et générer les images
 loadCSV();
