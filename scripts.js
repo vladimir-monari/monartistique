@@ -56,12 +56,19 @@ function initMasonry() {
 function adjustFooterPosition() {
     var copyright = document.getElementById('copyright');
     var footer = document.querySelector('footer');
+    var galleryContainer = document.querySelector('.image-container');
 
     // Obtenez la hauteur combinée du copyright et du footer
     var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
 
+    // Obtenez la hauteur des images
+    var imagesHeight = galleryContainer.offsetHeight;
+
+    // Ajoutez la hauteur des images à la hauteur combinée
+    var totalHeight = combinedHeight + imagesHeight;
+
     // Ajoutez cette hauteur comme marge au bas du conteneur principal
-    document.getElementById('container').style.marginBottom = combinedHeight + 'px';
+    document.getElementById('container').style.marginBottom = totalHeight + 'px';
 }
 
 
