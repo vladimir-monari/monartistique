@@ -73,7 +73,7 @@ function initMasonry() {
     var galleryContainer = document.querySelector('.image-container');
     var $grid = new Masonry(galleryContainer, {
         itemSelector: '.gallery-item',
-        columnWidth: '.gallery-sizer',
+        rowWidth: '.gallery-sizer',
         percentPosition: true
     });
     // layout Masonry after each image loads

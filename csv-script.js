@@ -18,15 +18,15 @@ function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
     // Nombre d'images par colonne
-    var imagesPerColumn = 6; // 3 petites, 2 moyennes, 1 grande
+    var imagesPerrow = 6; // 3 petites, 2 moyennes, 1 grande
 
-    // Ajouter une nouvelle colonne pour chaque groupe d'imagesPerColumn
-    for (var i = 0; i < data.length; i += imagesPerColumn) {
-        var column = document.createElement('div');
-        column.classList.add('column');
+    // Ajouter une nouvelle colonne pour chaque groupe d'imagesPerrow
+    for (var i = 0; i < data.length; i += imagesPerrow) {
+        var row = document.createElement('div');
+        row.classList.add('row');
 
         // Générer des images pour cette colonne
-        for (var j = i; j < i + imagesPerColumn && j < data.length; j++) {
+        for (var j = i; j < i + imagesPerrow && j < data.length; j++) {
             var item = data[j];
             if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
                 continue; // Ignorer cette entrée
@@ -41,11 +41,11 @@ function generateImages(data) {
                 img.classList.add(tag.trim());
             });
 
-            column.appendChild(img);
+            row.appendChild(img);
         }
 
         // Ajouter la colonne à la galerie
-        galleryContainer.appendChild(column);
+        galleryContainer.appendChild(row);
     }
 
     // Réinitialiser les compteurs après avoir généré les images
