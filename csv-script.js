@@ -36,6 +36,15 @@ function generateImages(data) {
     });
 }
 
+function createRandomSizeImage(src) {
+    const img = document.createElement('img');
+    img.src = src;
+    const imageSizes = ['small', 'medium', 'large'];
+    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
+    img.classList.add('gallery-item', randomSize);
+    return img;
+}
+
 // Appel de la fonction pour charger le CSV et générer les images
 loadCSV();
 
