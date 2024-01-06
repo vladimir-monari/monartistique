@@ -11,30 +11,27 @@ function loadCSV() {
 
 // Fonction pour générer les éléments d'image
 function generateImages(data) {
-    var gallery = document.getElementById('gallery');
-    var imageContainer = document.createElement('div');
-    imageContainer.className = 'image-container';
+    var galleryContainer = document.querySelector('.image-container');
 
     data.forEach(function(item) {
         if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
             return; // Ignorez cette entrée
         }
-        img = document.createElement('img');
-        img.src = item['Chemin de l\'image'];
+
+        var img = createRandomSizeImage(item['Chemin de l\'image']);
         img.alt = item['Description de l\'image'];
         img.onclick = function() {
             openModal(item['Chemin de l\'image']);
         };
-        imageContainer.appendChild(img);
 
         // Ajouter les tags à chaque image
-        var tags = item.Tags.split('-');
+        var tags = item.Tags.split(',');
         tags.forEach(function(tag) {
             img.classList.add(tag.trim());
         });
-    });
 
-    gallery.appendChild(imageContainer);
+        galleryContainer.appendChild(img);
+    });
 }
 
 // Appel de la fonction pour charger le CSV et générer les images

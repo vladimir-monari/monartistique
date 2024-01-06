@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('#gallery img');
+    const images = document.querySelectorAll('.image-container img');
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
     document.body.appendChild(lightbox);
@@ -57,11 +57,3 @@ function createRandomSizeImage(src) {
     img.classList.add('gallery-item', randomSize);
     return img;
 }
-
-// Supposons que vous ayez un tableau d'URL d'images
-const imageSources = ['path/to/image1.jpg', 'path/to/image2.jpg', /* autres images... */];
-
-imageSources.forEach(src => {
-    const img = createRandomSizeImage(src);
-    galleryContainer.appendChild(img);
-});
