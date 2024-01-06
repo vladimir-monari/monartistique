@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Masonry
-    initMasonry();
-
     const images = document.querySelectorAll('.image-container img');
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -36,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
         tas.style.fontFamily = policeAleatoire;
         tas.style.fontSize = `${tailleAleatoire}px`;
     });
+    // Initialize Masonry after generating images
+    initMasonry();
 });
 
 // Fonction pour initialiser Masonry
