@@ -58,6 +58,13 @@ h2 {
     cursor: pointer;
     transition: transform 0.3s ease;
     width: 100%; /* Assurez-vous que les images occupent toute la largeur de la colonne */
+    max-width: 300px; /* Ajustez la largeur maximale selon vos préférences */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .gallery-item:hover {
@@ -65,9 +72,9 @@ h2 {
 }
 
 /* Classes pour différentes tailles */
-.small { width: 100%; } /* 100% de la colonne */
-.medium { width: 100%; }
-.large { width: 100%; }
+.small { max-width: 150px; } /* Ajustez la largeur maximale selon vos préférences */
+.medium { max-width: 200px; }
+.large { max-width: 300px; }
 
 #myModal {
     display: none;
