@@ -52,23 +52,18 @@ h2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 20px;
-    text-align: center;
 }
 
 .gallery img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer; /* Changement du curseur pour indiquer la cliquabilité */
     transition: transform 0.3s ease;
 }
 
 .gallery img:hover {
     transform: scale(1.05);
-}
-
-#gallery h2 {
-    margin-bottom: 20px; /* Espace entre le titre et les images */
 }
 
 #myModal {
@@ -118,46 +113,24 @@ img#modalImg {
     font-style: italic; /* Texte en italique */
 }
 
-/* Styles spécifiques pour les lettres "M" et "T" dans "MonarTistique" */
-.special-font {
+.special-font, .special-font2 {
     font-family: 'Pacifico', cursive;
-    color: #4a7ba7;
     font-size: 2em; /* Ajustez la taille selon vos préférences */
+}
+
+.special-font {
+    color: #4a7ba7;
 }
 
 .special-font2 {
-    font-family: 'Pacifico', cursive;
     color: #3edb1f;
-    font-size: 2em; /* Ajustez la taille selon vos préférences */
 }
-
 
 .highlight {
     font-weight: bold;
     color: #4a7ba7;
 }
 
-/* Styles pour le lightbox */
-.lightbox {
-    position: fixed;
-    top: 5%; /* Marge en haut */
-    left: 0;
-    width: 100%;
-    height: 90%; /* Hauteur ajustée pour éviter la barre de défilement */
-    background: rgba(0, 0, 0, 0.8);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.lightbox img {
-    max-width: 80%;
-    max-height: 80%;
-    margin: 0 auto;
-}
-
-/* Autres styles... */
 footer {
     background-color: #333;
     color: white;
