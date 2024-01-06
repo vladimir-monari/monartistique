@@ -5,6 +5,7 @@ function loadCSV() {
         complete: function(results) {
             shuffleArray(results.data); // Mélanger les données
             generateImages(results.data);
+            initMasonry(); // Initialise Masonry après la génération des images
         }
     });
 }
@@ -56,6 +57,20 @@ function generateImages(data) {
             columnWidth: '.grid-sizer',
             fitWidth: true
         });
+    });
+}
+
+function initMasonry() {
+    var grid = document.querySelector('.image-container');
+    var msnry = new Masonry(grid, {
+        itemSelector: '.gallery-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true
+    });
+
+    // Assurer que Masonry s'initialise après le chargement des images
+    imagesLoaded(grid).on('progress', function() {
+        msnry.layout();
     });
 }
 
