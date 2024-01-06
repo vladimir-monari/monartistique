@@ -80,9 +80,9 @@ h2 {
 }
 
 /* Classes pour différentes tailles */
-.small { max-width: 150px; } /* Ajustez la largeur maximale selon vos préférences */
-.medium { max-width: 200px; }
-.large { max-width: 300px; }
+.small { max-width: 200; } /* Ajustez la largeur maximale selon vos préférences */
+.medium { max-width: 400px; }
+.large { max-width: 600px; }
 
 #myModal {
     display: none;
