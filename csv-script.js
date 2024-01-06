@@ -32,9 +32,9 @@ function generateImages(data) {
                 continue; // Ignorer cette entrée
             }
 
-            //var imageSize = determineImageSize();
-            //var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
-            var img = document.createElement('img');
+            var imageSize = determineImageSize();
+            var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
+            //var img = document.createElement('img');
             img.src = item['Chemin de l\'image'];
             
             // Ajouter les tags à chaque image
