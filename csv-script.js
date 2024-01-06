@@ -13,12 +13,17 @@ function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
     // Nombre d'images par colonne
-    var imagesPerColumn = 3;
+    var imagesPerColumn = 6; // 3 petites, 2 moyennes, 1 grande
 
     // Ajouter une nouvelle colonne pour chaque groupe d'imagesPerColumn
     for (var i = 0; i < data.length; i += imagesPerColumn) {
         var column = document.createElement('div');
         column.classList.add('column');
+
+        // Compteurs pour chaque taille d'image
+        var smallCount = 0;
+        var mediumCount = 0;
+        var largeCount = 0;
 
         // Générer des images pour cette colonne
         for (var j = i; j < i + imagesPerColumn && j < data.length; j++) {
@@ -27,13 +32,11 @@ function generateImages(data) {
                 continue; // Ignorer cette entrée
             }
 
-            var img = createRandomSizeImage(item['Chemin de l\'image']);
-            //var img = document.createElement('img');
-            //img.src = item['Chemin de l\'image'];
-            img.alt = item['Description de l\'image'];
-            img.onclick = function () {
-                openModal(item['Chemin de l\'image']);
-            };
+            var imageSize = determineImageSize(smallCount, mediumCount, largeCount);
+            var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
+
+            // Mettre à jour les compteurs de taille d'image
+            updateCounters(imageSize);
 
             // Ajouter les tags à chaque image
             var tags = item.Tags.split(',');
@@ -52,13 +55,32 @@ function generateImages(data) {
     initMasonry();
 }
 
+function determineImageSize(smallCount, mediumCount, largeCount) {
+    // Logique pour déterminer la taille de l'image en fonction des compteurs
+    if (smallCount < 3) {
+        return 'small';
+    } else if (mediumCount < 2) {
+        return 'medium';
+    } else if (largeCount < 1) {
+        return 'large';
+    }
+}
 
-function createRandomSizeImage(src) {
+function updateCounters(imageSize) {
+    // Mettre à jour les compteurs de taille d'image
+    if (imageSize === 'small') {
+        smallCount++;
+    } else if (imageSize === 'medium') {
+        mediumCount++;
+    } else if (imageSize === 'large') {
+        largeCount++;
+    }
+}
+
+function createRandomSizeImage(src, size) {
     const img = document.createElement('img');
     img.src = src;
-    const imageSizes = ['small', 'medium', 'large'];
-    const randomSize = imageSizes[Math.floor(Math.random() * imageSizes.length)];
-    img.classList.add('gallery-item', randomSize);
+    img.classList.add('gallery-item', size);
     return img;
 }
 
