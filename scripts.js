@@ -40,17 +40,30 @@ document.addEventListener('DOMContentLoaded', function () {
 // Fonction pour initialiser Masonry
 function initMasonry() {
     var galleryContainer = document.querySelector('.image-container');
-    var masonry = new Masonry(galleryContainer, {
+    var $grid = new Masonry(galleryContainer, {
         itemSelector: '.gallery-item',
         columnWidth: '.gallery-sizer',
         percentPosition: true
     });
 
-    // layout Masonry after each image loads
-    imagesLoaded(galleryContainer).on('progress', function () {
-        masonry.layout();
+    // Lorsque toutes les images sont chargées (y compris celles générées par Masonry), ajustez la position du copyright et du footer
+    imagesLoaded(galleryContainer).always(function () {
+        adjustFooterPosition();
     });
 }
+
+// Fonction pour ajuster la position du copyright et du footer
+function adjustFooterPosition() {
+    var copyright = document.getElementById('copyright');
+    var footer = document.querySelector('footer');
+
+    // Obtenez la hauteur combinée du copyright et du footer
+    var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
+
+    // Ajoutez cette hauteur comme marge au bas du conteneur principal
+    document.getElementById('container').style.marginBottom = combinedHeight + 'px';
+}
+
 
 
 function openModal(imageSrc) {
