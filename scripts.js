@@ -42,9 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var totalHeight = 0;
 
         for (var i = 0; i < images.length; i++) {
-            //images[i].style.position = 'relative'; // Temporairement pour le calcul
+            images[i].style.position = 'relative'; // Temporairement pour le calcul
             totalHeight += images[i].offsetHeight;
-            //images[i].style.position = 'absolute'; // Revenir à la position absolue
+            images[i].style.position = 'absolute'; // Revenir à la position absolue
+            images[i].style.width = "33%";
         }
         container.style.height = totalHeight + 'px';
     }
