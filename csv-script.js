@@ -34,33 +34,26 @@ function shuffleArray(array) {
     return array;
 }
 
-
 function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
-    // Nombre d'images par ligne
-    var imagesPerRow = 12; // 3 petites, 2 moyennes, 1 grande
+    // Générer des images pour une seule ligne
+    var row = document.createElement('div');
+    row.classList.add('image-row'); // Utilisation d'une classe 'image-row' pour la ligne
 
-    // Ajouter une nouvelle ligne pour chaque groupe d'imagesPerRow
-    for (var i = 0; i < data.length; i += imagesPerRow) {
-        var row = document.createElement('div');
-        row.classList.add('image-row'); // Utilisation d'une classe 'image-row' pour chaque ligne
-
-        // Générer des images pour cette ligne
-        for (var j = i; j < i + imagesPerRow && j < data.length; j++) {
-            var item = data[j];
-            if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
-                continue; // Ignorer cette entrée
-            }
-
-            var imageSize = determineImageSize();
-            var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
-            row.appendChild(img);
+    for (var i = 0; i < data.length; i++) {
+        var item = data[i];
+        if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
+            continue; // Ignorer cette entrée
         }
 
-        // Ajouter la ligne à la galerie
-        galleryContainer.appendChild(row);
+        var imageSize = determineImageSize();
+        var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
+        row.appendChild(img);
     }
+
+    // Ajouter la ligne à la galerie
+    galleryContainer.appendChild(row);
 
     // Réinitialiser les compteurs après avoir généré les images
     resetCounters();
@@ -70,25 +63,31 @@ function generateImages(data) {
 }
 
 function determineImageSize() {
-    // Logique pour déterminer la taille de l'image en fonction des compteurs
+    // Déterminer la taille de l'image en fonction des compteurs
+    // et continuer le cycle
     if (smallCount < 3) {
         smallCount++;
         return 'small';
     } else if (mediumCount < 2) {
         mediumCount++;
         return 'medium';
-    } else if (largeCount < 1) {
+    } else {
         largeCount++;
+        
+        // Réinitialiser les compteurs si tous les types ont été assignés
+        if (largeCount >= 1) {
+            resetCounters();
+        }
         return 'large';
     }
 }
 
 function resetCounters() {
-    // Réinitialiser les compteurs de taille d'image
     smallCount = 0;
     mediumCount = 0;
     largeCount = 0;
 }
+
 
 function createRandomSizeImage(src, size) {
     const img = document.createElement('img');
