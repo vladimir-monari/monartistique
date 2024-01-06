@@ -27,7 +27,9 @@ function generateImages(data) {
                 continue; // Ignorer cette entrée
             }
 
-            var img = createRandomSizeImage(item['Chemin de l\'image']);
+            //var img = createRandomSizeImage(item['Chemin de l\'image']);
+            var img = document.createElement('img');
+            img.src = item['Chemin de l\'image'];
             img.alt = item['Description de l\'image'];
             img.onclick = function () {
                 openModal(item['Chemin de l\'image']);
