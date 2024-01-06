@@ -45,7 +45,13 @@ function initMasonry() {
         columnWidth: '.gallery-sizer',
         percentPosition: true
     });
+
+    // layout Masonry after each image loads
+    imagesLoaded(galleryContainer).on('progress', function () {
+        masonry.layout();
+    });
 }
+
 
 function openModal(imageSrc) {
     var modal = document.getElementById('myModal');
