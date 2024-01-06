@@ -16,8 +16,7 @@ function generateImages(data) {
     imageContainer.className = 'image-container';
 
     data.forEach(function(item) {
-        
-        varif (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
+        if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
             return; // Ignorez cette entrée
         }
         img = document.createElement('img');
