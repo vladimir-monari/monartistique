@@ -49,6 +49,10 @@ h2 {
     text-justify: inter-word;
 }
 
+div#image-container {
+    text-align: center;
+}
+
 .description-container {
     text-align: center;
     max-width: 100%;
