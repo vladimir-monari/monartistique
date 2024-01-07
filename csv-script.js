@@ -61,6 +61,7 @@ function generateImages(data) {
 }
 
 function initMasonry() {
+    var galleryContainer = document.querySelector('.image-container');
     var grid = document.querySelector('.image-container');
     var msnry = new Masonry(grid, {
         itemSelector: '.gallery-item',
