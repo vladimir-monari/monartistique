@@ -1,13 +1,10 @@
 // Fonction pour charger un fichier CSV
+// Fonction pour charger un fichier CSV
 function loadCSV(callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'images.csv', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            callback(xhr.responseText);
-        }
-    };
-    xhr.send();
+    fetch('images.csv')
+        .then(response => response.text())
+        .then(data => callback(data))
+        .catch(error => console.error('Erreur lors du chargement du CSV:', error));
 }
 
 function generateImages(data) {
