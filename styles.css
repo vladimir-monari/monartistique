@@ -65,7 +65,6 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    display: block; /* pour éviter les marges par défaut des images */
 }
 
 /* Ajoutez vos styles CSS ici */
@@ -78,7 +77,6 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    display: block; /* pour éviter les marges par défaut des images */
 }
 
 .image-description {
