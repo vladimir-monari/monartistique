@@ -1,66 +1,20 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const images = document.querySelectorAll('.image-container img');
+d3.csv("images.csv").then(function(data) {
+    data.forEach(function(d) {
+        var img = new Image();
+        img.src = d.chemin;
+        img.alt = d.description;
+        img.classList.add("image-responsive");
 
-    images.forEach(image => {
-        image.addEventListener('click', () => {
-            openModal(image.src);
-        });
+        img.onclick = function() {
+            document.getElementById('modal').style.display = "block";
+            document.getElementById("modal-image").src = this.src;
+            document.getElementById("caption").innerHTML = this.alt;
+        };
+
+        document.getElementById("image-container").appendChild(img);
     });
-
-    // Vous pouvez également ajouter un écouteur d'événement au bouton de fermeture du modal
-    const closeButton = document.querySelector('.close');
-    closeButton.addEventListener('click', closeModal);
-
-    const tagElements = document.querySelectorAll('.tags-font');
-    const polices = ["Pacifico", "Lobster", "Dancing Script", "Caveat", "Shadows Into Light"];
-    const taillesMin = 16;
-    const taillesMax = 24;
-
-    tagElements.forEach(tag => {
-        const policeAleatoire = polices[Math.floor(Math.random() * polices.length)];
-        const tailleAleatoire = Math.floor(Math.random() * (taillesMax - taillesMin + 1)) + taillesMin;
-
-        tag.style.fontFamily = policeAleatoire;
-        tag.style.fontSize = `${tailleAleatoire}px`;
-    });
-
-    function updateContainerHeight() {
-        const container = document.querySelector('.image-container');
-        let totalHeight = 0;
-
-        images.forEach(img => {
-            totalHeight += img.offsetHeight;
-        });
-
-        container.style.height = totalHeight + 'px';
-    }
-
-    // Mise à jour de la hauteur après le chargement de toutes les images
-    images.forEach(img => {
-        img.addEventListener('load', updateContainerHeight);
-    });
-
-    // Appel initial pour ajuster la position du footer
-    adjustFooterPosition();
 });
 
-function adjustFooterPosition() {
-    var copyright = document.getElementById('copyright');
-    var footer = document.querySelector('footer');
-    var container = document.getElementById('container');
-
-    var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
-    container.style.marginBottom = combinedHeight + 'px';
-}
-
-function openModal(imageSrc) {
-    var modal = document.getElementById('myModal');
-    var modalImg = document.getElementById('modalImg');
-    modal.style.display = "block";
-    modalImg.src = imageSrc;
-}
-
-function closeModal() {
-    var modal = document.getElementById('myModal');
-    modal.style.display = "none";
-}
+document.getElementsByClassName("close")[0].onclick = function() {
+    document.getElementById('modal').style.display = "none";
+};

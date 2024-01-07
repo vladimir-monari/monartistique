@@ -34,18 +34,14 @@
             </div>
         </section>
         <h2>Galerie d'Art</h2>
-        <section id="gallery">
-            <div class="image-container">
-                <div class="gallery-sizer"></div>
-                <!-- ... vos colonnes et images ici ... -->
-            </div>
-                
-            <!-- Modal pour afficher l'image agrandie -->
-            <div id="myModal" class="modal">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <img class="modal-content" id="modalImg">
-            </div>
-        </section>
+        <div id="image-container"></div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modal-image">
+            <div id="caption"></div>
+        </div>
 
         <div id="copyright">
             <p>Aucune reproduction, même partielle, autres que celles prévues à l'article L 122-5 du code de la propriété intellectuelle, ne peut être faite de ce site sans l'autorisation expresse de l'auteur.</p>
@@ -58,10 +54,7 @@
     </footer>
 
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
-    <script src="csv-script.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
