@@ -63,6 +63,7 @@ function generateImages(data) {
 }
 
 function determineImageSize() {
+    return 'large';
     // Déterminer la taille de l'image en fonction des compteurs
     // et continuer le cycle
     if (smallCount < 3) {
