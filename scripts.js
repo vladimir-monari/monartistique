@@ -7,10 +7,8 @@ function loadCSV(callback) {
         .catch(error => console.error('Erreur lors du chargement du CSV:', error));
 }
 
-
 function generateImages(data) {
     var imageContainer = document.getElementById('image-container');
-    var maxContainerHeight = 30; // Hauteur maximale en vh
 
     Papa.parse(data, {
         header: true,
@@ -25,7 +23,7 @@ function generateImages(data) {
                 img.classList.add("image-responsive");
 
                 var description = document.createElement('div');
-                description.classList.add('description-container');
+                description.classList.add('image-description');
                 description.textContent = d['Description de l\'image'];
 
                 img.onclick = function () {
@@ -35,24 +33,21 @@ function generateImages(data) {
                 };
 
                 container.appendChild(img);
-                container.appendChild(description);
-                imageContainer.appendChild(container);
-
+                var descContainer = document.createElement('div'); // Nouveau conteneur pour la description
+                descContainer.classList.add('description-container'); // Nouvelle classe pour le style
+                descContainer.appendChild(description);
                 img.onload = function () {
-                    var totalHeight = container.offsetHeight;
-
-                    if (totalHeight > maxContainerHeight) {
-                        var excessHeight = totalHeight - maxContainerHeight;
-                        var newImgHeight = img.height - excessHeight;
-                        img.style.height = newImgHeight + 'px';
-                        img.style.width = 'auto';
-                    }
+                    // Ajuster la largeur du conteneur de description à la largeur de l'image
+                    descContainer.style.maxWidth = `${img.width}px`;
                 };
+                
+                container.appendChild(descContainer); // Ajoutez la description au nouveau conteneur
+                imageContainer.appendChild(container);
+                
             });
         }
     });
 }
-
 
 // Chargement du CSV et génération des images
 loadCSV(generateImages);
