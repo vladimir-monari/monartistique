@@ -49,6 +49,11 @@ h2 {
     text-justify: inter-word;
 }
 
+.image-wrapper {
+    display: inline-block; /* ou flex selon vos besoins */
+    margin: 10px;
+}
+
 /* Ajoutez vos styles CSS ici */
 .image-responsive {
     object-fit: contain;
@@ -59,20 +64,12 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: block; /* pour éviter les marges par défaut des images */
 }
 
 .image-description {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 5px;
-    width: 100%;
     text-align: center;
-    opacity: 0; /* Initialement invisible */
-    transition: opacity 0.3s ease;
+
 }
 
 .image-container:hover .image-description {

@@ -18,7 +18,7 @@ function generateImages(data) {
         complete: function (results) {
             results.data.forEach(function (d) {
                 var container = document.createElement('div');
-                container.classList.add('image-container');
+                container.classList.add('image-wrapper');
 
                 var img = new Image();
                 img.src = d['Chemin de l\'image'];
@@ -42,6 +42,7 @@ function generateImages(data) {
         }
     });
 }
+
 
 // Chargement du CSV et génération des images
 loadCSV(generateImages);
