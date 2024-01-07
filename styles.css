@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,7 +17,7 @@ header {
     background-color: #444;
     color: white;
     text-align: center;
-    padding: 2% 0; /* Ajustement en pourcentage */
+    padding: 2% 0;
 }
 
 header h1 {
@@ -26,11 +27,11 @@ header h1 {
 
 main {
     width: 90%;
-    margin: 2% auto; /* Ajustement en pourcentage */
+    margin: 2% auto;
 }
 
 #about, #gallery {
-    margin-bottom: 4%; /* Ajustement en pourcentage */
+    margin-bottom: 4%;
     text-align: center;
 }
 
@@ -53,15 +54,15 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
-    max-width: 90%; /* Ajustez la largeur maximale selon vos préférences */
+    max-width: 90%;
 }
 
 .gallery-item {
-    margin-bottom: 2%; /* Ajustement en pourcentage */
+    margin-bottom: 2%;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    flex: 0 0 calc(33.33% - 2%); /* Ajustement en pourcentage */
+    flex: 0 0 calc(33.33% - 2%);
     max-width: calc(33.33% - 2%);
 }
 
@@ -80,31 +81,30 @@ h2 {
 }
 
 .gallery-item.small {
-    flex: 0 0 10%; /* Ajustement en pourcentage */
+    flex: 0 0 10%;
 }
 
 .gallery-item.medium {
-    flex: 0 0 15%; /* Ajustement en pourcentage */
+    flex: 0 0 15%;
 }
 
 .gallery-item.large {
-    max-width: 51%; /* Largeur maximale pour chaque élément */
+    max-width: 51%;
 }
 
 .column {
-    width: 30%; /* Ajustement en pourcentage */
+    width: 30%;
 }
 
 #gallery img {
-    max-width: 100%; /* assure que la largeur de l'image ne dépasse pas celle du conteneur */
-    max-height: 100vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
-    width: auto; /* maintient les proportions originales de l'image */
-    height: auto; /* maintient les proportions originales de l'image */
+    max-width: 100%;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
-
 
 #myModal {
     display: none;
@@ -122,7 +122,7 @@ h2 {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 70%; /* Ajustement en pourcentage */
+    max-width: 70%;
 }
 
 .modal-content img {
@@ -131,7 +131,7 @@ h2 {
 }
 
 img#modalImg {
-    margin-top: 3%; /* Ajustement en pourcentage */
+    margin-top: 3%;
 }
 
 img.gallery-item {
@@ -140,17 +140,17 @@ img.gallery-item {
 
 .close {
     position: absolute;
-    top: 1.5%; /* Ajustement en pourcentage */
-    right: 3.5%; /* Ajustement en pourcentage */
-    font-size: 4%; /* Ajustement en pourcentage */
+    top: 1.5%;
+    right: 3.5%;
+    font-size: 4%;
     font-weight: bold;
     color: white;
     cursor: pointer;
 }
 
 #copyright {
-    margin-top: 4%; /* Ajustement en pourcentage */
-    margin-bottom: 2%; /* Ajustement en pourcentage */
+    margin-top: 4%;
+    margin-bottom: 2%;
     padding: 2%;
     background-color: rgba(255, 255, 255, 0.24);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
@@ -181,7 +181,7 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1%; /* Ajustement en pourcentage */
+    padding: 1%;
     bottom: 0;
     width: 100%;
     z-index: 10;
