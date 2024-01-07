@@ -44,7 +44,7 @@ h2 {
 }
 
 .intro-text {
-    text-align: justify;
+    text-align: center;
     text-justify: inter-word;
 }
 
@@ -92,12 +92,15 @@ h2 {
 }
 
 #gallery img {
-    width: 100%;
-    height: auto;
+    max-width: 100%; /* assure que la largeur de l'image ne dépasse pas celle du conteneur */
+    max-height: 100vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
+    width: auto; /* maintient les proportions originales de l'image */
+    height: auto; /* maintient les proportions originales de l'image */
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
+
 
 #myModal {
     display: none;
