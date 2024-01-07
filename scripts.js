@@ -72,7 +72,7 @@ function displayTagCloud(tags) {
         span.style.margin = '5px';
         tagCloud.appendChild(span);
     }
-    var galleryTitle = document.querySelector('#container h2');
+    var galleryTitle = document.querySelector('#container h3');
     galleryTitle.insertAdjacentElement('afterend', tagCloud);
 }
 
