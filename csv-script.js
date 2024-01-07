@@ -88,7 +88,6 @@ function resetCounters() {
     largeCount = 0;
 }
 
-
 function createRandomSizeImage(src, size) {
     const img = document.createElement('img');
     img.src = src;

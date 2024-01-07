@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     images.forEach(image => {
         image.addEventListener('click', () => {
-            lightbox.style.display = 'flex';
-            img.src = image.src;
+            openModal(image.src);
         });
     });
 
     lightbox.addEventListener('click', () => {
-        lightbox.style.display = 'none';
+        closeModal();
     });
 
     // Génération aléatoire de polices et tailles pour les tas
@@ -98,8 +97,6 @@ function adjustFooterPosition() {
     // Ajoutez cette hauteur comme marge au bas du conteneur principal
     document.getElementById('container').style.marginBottom = combinedHeight + 'px';
 }
-
-
 
 function openModal(imageSrc) {
     var modal = document.getElementById('myModal');
