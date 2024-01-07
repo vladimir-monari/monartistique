@@ -36,8 +36,17 @@ function generateImages(data) {
                 };
 
                 container.appendChild(img);
-                container.appendChild(description);
+                var descContainer = document.createElement('div'); // Nouveau conteneur pour la description
+                descContainer.classList.add('description-container'); // Nouvelle classe pour le style
+                descContainer.appendChild(description);
+                img.onload = function () {
+                    // Ajuster la largeur du conteneur de description à la largeur de l'image
+                    descContainer.style.maxWidth = `${img.width}px`;
+                };
+                
+                container.appendChild(descContainer); // Ajoutez la description au nouveau conteneur
                 imageContainer.appendChild(container);
+                
             });
         }
     });
