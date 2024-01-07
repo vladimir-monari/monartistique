@@ -84,8 +84,7 @@ h2 {
 }
 
 .gallery-item.large {
-    max-width: 90%; /* Largeur maximale pour chaque élément */
-    max-height: 90%; /* Hauteur maximale pour chaque élément */
+    max-width: 51%; /* Largeur maximale pour chaque élément */
 }
 
 .column {
