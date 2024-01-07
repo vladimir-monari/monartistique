@@ -9,12 +9,11 @@ function loadCSV(callback) {
 
 function generateImages(data) {
     var imageContainer = document.getElementById('image-container');
+    var maxContainerHeight = 300; // Hauteur maximale pour le conteneur
 
     Papa.parse(data, {
         header: true,
         complete: function (results) {
-            var maxDescriptionHeight = 0;
-
             results.data.forEach(function (d) {
                 var container = document.createElement('div');
                 container.classList.add('image-wrapper');
@@ -28,24 +27,35 @@ function generateImages(data) {
                 description.classList.add('image-description');
                 description.textContent = d['Description de l\'image'];
 
-                // ... (Code pour gérer le clic)
+                img.onclick = function () {
+                    document.getElementById('modal').style.display = "block";
+                    document.getElementById("modal-image").src = this.src;
+                    document.getElementById("caption").innerHTML = this.alt;
+                };
 
                 container.appendChild(img);
-                container.appendChild(description);
+                var descContainer = document.createElement('div');
+                descContainer.classList.add('description-container');
+                descContainer.appendChild(description);
+                container.appendChild(descContainer);
                 imageContainer.appendChild(container);
 
-                // Calcul de la hauteur de la description
-                var descriptionHeight = description.clientHeight;
-                if (descriptionHeight > maxDescriptionHeight) {
-                    maxDescriptionHeight = descriptionHeight;
-                }
-            });
+                img.onload = function () {
+                    var totalHeight = container.offsetHeight;
 
-            // Ajustez la hauteur du conteneur imageContainer
-            imageContainer.style.height = maxDescriptionHeight + 'px';
+                    if (totalHeight > maxContainerHeight) {
+                        var excessHeight = totalHeight - maxContainerHeight;
+                        var newImgHeight = img.height - excessHeight;
+                        img.style.height = newImgHeight + 'px';
+                        img.style.width = 'auto';
+                    }
+                };
+            });
         }
     });
 }
+
+
 
 // Chargement du CSV et génération des images
 loadCSV(generateImages);
