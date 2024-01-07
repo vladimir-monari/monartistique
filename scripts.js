@@ -13,6 +13,8 @@ function generateImages(data) {
     Papa.parse(data, {
         header: true,
         complete: function (results) {
+            var maxDescriptionHeight = 0;
+
             results.data.forEach(function (d) {
                 var container = document.createElement('div');
                 container.classList.add('image-wrapper');
@@ -26,29 +28,24 @@ function generateImages(data) {
                 description.classList.add('image-description');
                 description.textContent = d['Description de l\'image'];
 
-                img.onclick = function () {
-                    document.getElementById('modal').style.display = "block";
-                    document.getElementById("modal-image").src = this.src;
-                    document.getElementById("caption").innerHTML = this.alt;
-                };
+                // ... (Code pour gérer le clic)
 
                 container.appendChild(img);
-                var descContainer = document.createElement('div'); // Nouveau conteneur pour la description
-                descContainer.classList.add('description-container'); // Nouvelle classe pour le style
-                descContainer.appendChild(description);
-                img.onload = function () {
-                    // Ajuster la largeur du conteneur de description à la largeur de l'image
-                    descContainer.style.maxWidth = `${img.width}px`;
-                };
-                
-                container.appendChild(descContainer); // Ajoutez la description au nouveau conteneur
+                container.appendChild(description);
                 imageContainer.appendChild(container);
-                
+
+                // Calcul de la hauteur de la description
+                var descriptionHeight = description.clientHeight;
+                if (descriptionHeight > maxDescriptionHeight) {
+                    maxDescriptionHeight = descriptionHeight;
+                }
             });
+
+            // Ajustez la hauteur du conteneur imageContainer
+            imageContainer.style.height = maxDescriptionHeight + 'px';
         }
     });
 }
-
 
 // Chargement du CSV et génération des images
 loadCSV(generateImages);
