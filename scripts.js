@@ -9,11 +9,13 @@ function loadCSV(callback) {
 
 function generateImages(data) {
     var imageContainer = document.getElementById('image-container');
+    var tags = {};
 
     Papa.parse(data, {
         header: true,
         complete: function (results) {
             results.data.forEach(function (d) {
+                // Logique existante pour afficher les images...
                 var container = document.createElement('div');
                 container.classList.add('image-wrapper');
 
@@ -40,13 +42,38 @@ function generateImages(data) {
                     // Ajuster la largeur du conteneur de description à la largeur de l'image
                     descContainer.style.maxWidth = `${img.width}px`;
                 };
-                
+
                 container.appendChild(descContainer); // Ajoutez la description au nouveau conteneur
                 imageContainer.appendChild(container);
-                
+
+                // Nouvelle logique pour les tags
+                d['Tags'].split('-').forEach(function (tag) {
+                    if (tags[tag]) {
+                        tags[tag]++;
+                    } else {
+                        tags[tag] = 1;
+                    }
+                });
             });
+
+            displayTagCloud(tags);
         }
     });
+}
+
+function displayTagCloud(tags) {
+    var tagCloud = document.createElement('div');
+    tagCloud.id = 'tag-cloud';
+    for (var tag in tags) {
+        var size = 16 + (tags[tag] * 2); // Exemple de calcul de taille
+        var span = document.createElement('span');
+        span.textContent = tag + ' ';
+        span.style.fontSize = size + 'px';
+        span.style.margin = '5px';
+        tagCloud.appendChild(span);
+    }
+    var galleryTitle = document.querySelector('#container h2');
+    galleryTitle.insertAdjacentElement('afterend', tagCloud);
 }
 
 // Chargement du CSV et génération des images

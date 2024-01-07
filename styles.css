@@ -50,6 +50,21 @@ h2 {
     text-justify: inter-word;
 }
 
+#tag-cloud {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#tag-cloud span {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#tag-cloud span:hover {
+    color: #4a7ba7;
+    transform: scale(1.1);
+}
+
 div#image-container {
     text-align: center;
 }
