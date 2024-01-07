@@ -146,8 +146,7 @@ div#image-container {
     font-style: italic;
 }
 
-.special-font,
-.special-font2 {
+.special-font {
     font-family: 'Pacifico', cursive;
     font-size: 2em;
 }
