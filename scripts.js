@@ -1,11 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const images = document.querySelectorAll('.image-container img');
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox';
-    document.body.appendChild(lightbox);
-
-    const img = document.createElement('img');
-    lightbox.appendChild(img);
 
     images.forEach(image => {
         image.addEventListener('click', () => {
@@ -13,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    lightbox.addEventListener('click', () => {
-        closeModal();
-    });
+    // Vous pouvez également ajouter un écouteur d'événement au bouton de fermeture du modal
+    const closeButton = document.querySelector('.close');
+    closeButton.addEventListener('click', closeModal);
 
     const tagElements = document.querySelectorAll('.tags-font');
     const polices = ["Pacifico", "Lobster", "Dancing Script", "Caveat", "Shadows Into Light"];
