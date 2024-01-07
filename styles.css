@@ -84,7 +84,7 @@ div#image-container {
     margin: 10px;
     object-fit: contain;
     max-width: 100%; /* assure que la largeur de l'image ne dépasse pas celle du conteneur */
-    max-height: 100vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
+    /*max-height: 100vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
     width: auto; /* maintient les proportions originales de l'image */
     height: auto; /* maintient les proportions originales de l'image */
     border-radius: 5px;
