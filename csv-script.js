@@ -1,3 +1,8 @@
+// Variables globales pour les compteurs de taille d'image
+var smallCount = 0;
+var mediumCount = 0;
+var largeCount = 0;
+
 function loadCSV() {
     Papa.parse('images.csv', {
         download: true,
@@ -5,7 +10,6 @@ function loadCSV() {
         complete: function(results) {
             shuffleArray(results.data); // Mélanger les données
             generateImages(results.data);
-            initMasonry(); // Initialise Masonry après la génération des images
         }
     });
 }
@@ -33,64 +37,63 @@ function shuffleArray(array) {
 function generateImages(data) {
     var galleryContainer = document.querySelector('.image-container');
 
-    // Vider le conteneur avant d'ajouter de nouvelles images
-    galleryContainer.innerHTML = '';
+    // Générer des images pour une seule ligne
+    var row = document.createElement('div');
+    row.classList.add('image-row'); // Utilisation d'une classe 'image-row' pour la ligne
 
-    data.forEach(item => {
+    for (var i = 0; i < data.length; i++) {
+        var item = data[i];
         if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
-            return;
+            continue; // Ignorer cette entrée
         }
 
-        var img = document.createElement('img');
-        img.src = item['Chemin de l\'image'];
-        img.alt = item['Nom de l\'image'];
-        img.classList.add('gallery-item');
+        var imageSize = determineImageSize();
+        var img = createRandomSizeImage(item['Chemin de l\'image'], imageSize);
+        row.appendChild(img);
+    }
 
-        galleryContainer.appendChild(img);
-    });
+    // Ajouter la ligne à la galerie
+    galleryContainer.appendChild(row);
 
-    // Initialisation de Masonry après le chargement des images
-    imagesLoaded(galleryContainer, function() {
-        new Masonry(galleryContainer, {
-            itemSelector: '.gallery-item',
-            percentPosition: true,
-            columnWidth: '.grid-sizer',
-            fitWidth: true
-        });
-    });
+    // Réinitialiser les compteurs après avoir généré les images
+    resetCounters();
+
+    // Initialize Masonry after images are generated
+    initMasonry();
 }
 
-function initMasonry() {
-    var galleryContainer = document.querySelector('.image-container');
-    var grid = document.querySelector('.image-container');
-    var msnry = new Masonry(grid, {
-        itemSelector: '.gallery-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-
-    // Assurer que Masonry s'initialise après le chargement des images
-    imagesLoaded(grid).on('progress', function() {
-        msnry.layout();
-    });
-
-    // Lorsque toutes les images sont chargées (y compris celles générées par Masonry), ajustez la position du copyright et du footer
-    imagesLoaded(galleryContainer, function () {
-        adjustFooterPosition();
-    });
+function determineImageSize() {
+    // Déterminer la taille de l'image en fonction des compteurs
+    // et continuer le cycle
+    if (smallCount < 3) {
+        smallCount++;
+        return 'small';
+    } else if (mediumCount < 2) {
+        mediumCount++;
+        return 'medium';
+    } else {
+        largeCount++;
+        
+        // Réinitialiser les compteurs si tous les types ont été assignés
+        if (largeCount >= 1) {
+            resetCounters();
+        }
+        return 'large';
+    }
 }
 
-// Fonction pour ajuster la position du copyright et du footer
-function adjustFooterPosition() {
-    var copyright = document.getElementById('copyright');
-    var footer = document.querySelector('footer');
-    var galleryContainer = document.querySelector('.image-container');
+function resetCounters() {
+    smallCount = 0;
+    mediumCount = 0;
+    largeCount = 0;
+}
 
-    // Obtenez la hauteur combinée du copyright et du footer
-    var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
 
-    // Ajoutez cette hauteur comme marge au bas du conteneur principal
-    document.getElementById('container').style.marginBottom = combinedHeight + 'px';
+function createRandomSizeImage(src, size) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.classList.add('gallery-item', size);
+    return img;
 }
 
 // Appel de la fonction pour charger le CSV et générer les images

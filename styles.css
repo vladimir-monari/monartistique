@@ -1,61 +1,105 @@
-/* Styles de base */
-body, html {
-    font-family: 'Open Sans', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
     color: #333;
-    background-color: #f4f4f4;
+    text-align: justify;
 }
 
-h1, h2 {
-    font-family: 'Pacifico', cursive;
-}
-
-/* En-tête */
 header {
-    background: #333;
-    color: #fff;
-    padding: 1rem 0;
+    background-color: #444;
+    color: white;
+    text-align: center;
+    padding: 2% 0; /* Ajustement en pourcentage */
+}
+
+header h1 {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+main {
+    width: 90%;
+    margin: 2% auto; /* Ajustement en pourcentage */
+}
+
+#about, #gallery {
+    margin-bottom: 4%; /* Ajustement en pourcentage */
     text-align: center;
 }
 
-/* Section À Propos */
-#about {
-    background: #fff;
-    padding: 2rem;
-    text-align: center;
+h2 {
+    color: #444;
 }
 
-.special-font {
-    font-family: 'Pacifico', cursive;
-    color: #333;
+.centered-container {
+    width: 80%;
+    margin: auto;
 }
 
-.highlight {
-    color: #555;
-    font-weight: bold;
-}
-
-/* Galerie */
-#gallery {
-    padding: 2rem;
+.intro-text {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 0 auto;
-    column-count: 4;
-    column-gap: 1rem;
+    max-width: 90%; /* Ajustez la largeur maximale selon vos préférences */
 }
 
 .gallery-item {
-    margin-bottom: 1rem;
-    width: 33%;
-    display: block;
+    margin-bottom: 2%; /* Ajustement en pourcentage */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    flex: 0 0 calc(33.33% - 2%); /* Ajustement en pourcentage */
+    max-width: calc(33.33% - 2%);
 }
 
-/* Styles de la modal */
-.modal {
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item.small {
+    flex: 0 0 10%; /* Ajustement en pourcentage */
+}
+
+.gallery-item.medium {
+    flex: 0 0 15%; /* Ajustement en pourcentage */
+}
+
+.gallery-item.large {
+    flex: 0 0 30%; /* Ajustement en pourcentage */
+}
+
+.column {
+    width: 30%; /* Ajustement en pourcentage */
+}
+
+#gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#myModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -64,7 +108,6 @@ header {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.9);
 }
 
@@ -72,29 +115,71 @@ header {
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 70%; /* Ajustement en pourcentage */
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+}
+
+img#modalImg {
+    margin-top: 3%; /* Ajustement en pourcentage */
+}
+
+img.gallery-item {
+    position: static !important;
 }
 
 .close {
     position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
+    top: 1.5%; /* Ajustement en pourcentage */
+    right: 3.5%; /* Ajustement en pourcentage */
+    font-size: 4%; /* Ajustement en pourcentage */
     font-weight: bold;
+    color: white;
     cursor: pointer;
 }
 
-/* Pied de page */
-footer {
-    background: #333;
-    color: #fff;
+#copyright {
+    margin-top: 4%; /* Ajustement en pourcentage */
+    margin-bottom: 2%; /* Ajustement en pourcentage */
+    padding: 2%;
+    background-color: rgba(255, 255, 255, 0.24);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
     text-align: center;
-    padding: 1rem 0;
+    font-style: italic;
 }
 
-@media screen and (max-width: 600px) {
-    .image-container {
-        column-count: 2;
-    }
+.special-font,
+.special-font2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+}
+
+.special-font {
+    color: #4a7ba7;
+}
+
+.special-font2 {
+    color: #3edb1f;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #4a7ba7;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1%; /* Ajustement en pourcentage */
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#container {
+    position: relative;
 }
