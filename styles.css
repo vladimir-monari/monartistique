@@ -40,6 +40,11 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    color: #444;
+    text-align: center;
+}
+
 .centered-container {
     width: 80%;
     margin: auto;
@@ -149,14 +154,12 @@ div#image-container {
 .special-font {
     font-family: 'Pacifico', cursive;
     font-size: 2em;
-}
-
-.special-font {
     color: #4a7ba7;
 }
 
 .special-font2 {
     color: #3edb1f;
+    font-size: 2em;
 }
 
 .highlight {
