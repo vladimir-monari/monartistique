@@ -96,7 +96,7 @@ function filterImages(selectedTag) {
         var tags = container.dataset.tags.split('-');
 
         if (selectedTag === 'tout' || tags.includes(selectedTag)) {
-            container.style.display = 'block';
+            container.style.display = 'inline-block';
         } else {
             container.style.display = 'none';
         }
