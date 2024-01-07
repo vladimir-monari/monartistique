@@ -40,21 +40,26 @@ function generateImages(data) {
                 container.appendChild(descContainer);
                 imageContainer.appendChild(container);
 
+                // Ajuster la hauteur de l'image et la largeur de la description
                 img.onload = function () {
                     var totalHeight = container.offsetHeight;
 
                     if (totalHeight > maxContainerHeight) {
                         var excessHeight = totalHeight - maxContainerHeight;
+
+                        // Ajuster la hauteur de l'image
                         var newImgHeight = img.height - excessHeight;
                         img.style.height = newImgHeight + 'px';
                         img.style.width = 'auto';
+
+                        // Ajuster la largeur de la description
+                        descContainer.style.maxWidth = `${img.width}px`;
                     }
                 };
             });
         }
     });
 }
-
 
 
 // Chargement du CSV et génération des images
