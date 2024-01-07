@@ -30,53 +30,30 @@ main {
     margin: 2% auto;
 }
 
-#about, #gallery {
-    margin-bottom: 4%;
-    text-align: center;
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 30vh;
+    margin: 10px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-h2 {
-    color: #444;
-}
-
-.centered-container {
-    width: 80%;
-    margin: auto;
-}
-
-.intro-text {
-    text-align: center;
-    text-justify: inter-word;
+.image-responsive {
+    max-width: 100%;
+    max-height: 70%;
+    object-fit: cover;
+    width: auto;
+    height: auto;
 }
 
 .description-container {
     text-align: center;
-    max-width: 100%;
-}
-
-.image-wrapper {
-    display: inline-block; /* ou flex selon vos besoins */
-    margin: 10px;
-}
-
-/* Ajoutez vos styles CSS ici */
-.image-responsive {
-    object-fit: contain;
-    max-width: 100%; /* assure que la largeur de l'image ne dépasse pas celle du conteneur */
-    max-height: 100vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
-    width: auto; /* maintient les proportions originales de l'image */
-    height: auto; /* maintient les proportions originales de l'image */
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    display: block; /* pour éviter les marges par défaut des images */
-}
-
-.image-description {
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 5px;
+    overflow: auto;
+    max-height: 30%;
 }
 
 .modal {
@@ -89,7 +66,7 @@ h2 {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {

@@ -7,9 +7,10 @@ function loadCSV(callback) {
         .catch(error => console.error('Erreur lors du chargement du CSV:', error));
 }
 
+
 function generateImages(data) {
     var imageContainer = document.getElementById('image-container');
-    var maxContainerHeight = 300; // Hauteur maximale pour le conteneur
+    var maxContainerHeight = 30; // Hauteur maximale en vh
 
     Papa.parse(data, {
         header: true,
@@ -24,7 +25,7 @@ function generateImages(data) {
                 img.classList.add("image-responsive");
 
                 var description = document.createElement('div');
-                description.classList.add('image-description');
+                description.classList.add('description-container');
                 description.textContent = d['Description de l\'image'];
 
                 img.onclick = function () {
@@ -34,26 +35,17 @@ function generateImages(data) {
                 };
 
                 container.appendChild(img);
-                var descContainer = document.createElement('div');
-                descContainer.classList.add('description-container');
-                descContainer.appendChild(description);
-                container.appendChild(descContainer);
+                container.appendChild(description);
                 imageContainer.appendChild(container);
 
-                // Ajuster la hauteur de l'image et la largeur de la description
                 img.onload = function () {
                     var totalHeight = container.offsetHeight;
 
                     if (totalHeight > maxContainerHeight) {
                         var excessHeight = totalHeight - maxContainerHeight;
-
-                        // Ajuster la hauteur de l'image
                         var newImgHeight = img.height - excessHeight;
                         img.style.height = newImgHeight + 'px';
                         img.style.width = 'auto';
-
-                        // Ajuster la largeur de la description
-                        descContainer.style.maxWidth = `${img.width}px`;
                     }
                 };
             });
