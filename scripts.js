@@ -23,6 +23,10 @@ function generateImages(data) {
                 img.alt = d['Description de l\'image'];
                 img.classList.add("image-responsive");
 
+                var description = document.createElement('div');
+                description.classList.add('image-description');
+                description.textContent = d['Description de l\'image'];
+
                 img.onclick = function () {
                     document.getElementById('modal').style.display = "block";
                     document.getElementById("modal-image").src = this.src;
@@ -30,6 +34,14 @@ function generateImages(data) {
                 };
 
                 container.appendChild(img);
+                var descContainer = document.createElement('div');
+                descContainer.classList.add('description-container');
+                descContainer.appendChild(description);
+                img.onload = function () {
+                    descContainer.style.maxWidth = `${img.width}px`;
+                };
+
+                container.appendChild(descContainer);
                 imageContainer.appendChild(container);
 
                 d['Tags'].split('-').forEach(function (tag) {
