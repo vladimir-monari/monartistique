@@ -1,18 +1,7 @@
 // Attendre que le DOM soit prêt
 document.addEventListener('DOMContentLoaded', function () {
-
     // Sélectionner la galerie et le conteneur
     var galleryContainer = document.querySelector('.image-container');
-
-    // Initialisation de Masonry après le chargement des images
-    imagesLoaded(galleryContainer, function () {
-        new Masonry(galleryContainer, {
-            itemSelector: '.gallery-item',
-            percentPosition: true,
-            columnWidth: '.grid-sizer',
-            fitWidth: true
-        });
-    });
 
     // Ajouter un écouteur pour ajuster Masonry lorsque les images sont chargées
     galleryContainer.addEventListener('layoutComplete', function () {
