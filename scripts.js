@@ -17,68 +17,46 @@ document.addEventListener('DOMContentLoaded', function () {
         closeModal();
     });
 
-    // Génération aléatoire de polices et tailles pour les tas
-    const tasElements = document.querySelectorAll('.tags-font');
+    const tagElements = document.querySelectorAll('.tags-font');
     const polices = ["Pacifico", "Lobster", "Dancing Script", "Caveat", "Shadows Into Light"];
-    const taillesMin = 16; // Taille minimale de la police
-    const taillesMax = 24; // Taille maximale de la police
+    const taillesMin = 16;
+    const taillesMax = 24;
 
-    tasElements.forEach(tas => {
-        // Générer une police et une taille aléatoire
+    tagElements.forEach(tag => {
         const policeAleatoire = polices[Math.floor(Math.random() * polices.length)];
         const tailleAleatoire = Math.floor(Math.random() * (taillesMax - taillesMin + 1)) + taillesMin;
 
-        // Appliquer la police et la taille au tas
-        tas.style.fontFamily = policeAleatoire;
-        tas.style.fontSize = `${tailleAleatoire}px`;
+        tag.style.fontFamily = policeAleatoire;
+        tag.style.fontSize = `${tailleAleatoire}px`;
     });
-  
-    // Fonction pour mettre à jour la hauteur du conteneur
-    function updateContainerHeight() {
-        var container = document.querySelector('.image-container');
-        var images = container.getElementsByTagName('img');
-        var totalHeight = 0;
 
-        for (var i = 0; i < images.length; i++) {
-            images[i].style.position = 'relative'; // Temporairement pour le calcul
-            totalHeight += images[i].offsetHeight;
-            images[i].style.position = 'absolute'; // Revenir à la position absolue
-        }
+    function updateContainerHeight() {
+        const container = document.querySelector('.image-container');
+        let totalHeight = 0;
+
+        images.forEach(img => {
+            totalHeight += img.offsetHeight;
+        });
+
         container.style.height = totalHeight + 'px';
     }
 
     // Mise à jour de la hauteur après le chargement de toutes les images
-    let loadedImages = 0;
     images.forEach(img => {
-        if (img.complete) {
-            loadedImages++;
-            if (loadedImages === images.length) {
-                updateContainerHeight();
-            }
-        } else {
-            img.addEventListener('load', () => {
-                loadedImages++;
-                if (loadedImages === images.length) {
-                    updateContainerHeight();
-                }
-            });
-        }
+        img.addEventListener('load', updateContainerHeight);
     });
-    container.adjustFooterPosition();
 
+    // Appel initial pour ajuster la position du footer
+    adjustFooterPosition();
 });
 
-// Fonction pour ajuster la position du copyright et du footer
 function adjustFooterPosition() {
     var copyright = document.getElementById('copyright');
     var footer = document.querySelector('footer');
-    var galleryContainer = document.querySelector('.image-container');
+    var container = document.getElementById('container');
 
-    // Obtenez la hauteur combinée du copyright et du footer
     var combinedHeight = copyright.offsetHeight + footer.offsetHeight;
-
-    // Ajoutez cette hauteur comme marge au bas du conteneur principal
-    document.getElementById('container').style.marginBottom = combinedHeight + 'px';
+    container.style.marginBottom = combinedHeight + 'px';
 }
 
 function openModal(imageSrc) {
