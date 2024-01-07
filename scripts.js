@@ -10,19 +10,24 @@ function loadCSV(callback) {
     xhr.send();
 }
 
-// Fonction pour générer les images à partir des données CSV
 function generateImages(data) {
     var imageContainer = document.getElementById('image-container');
 
-    // Utilisation de la bibliothèque PapaParse pour analyser le CSV
     Papa.parse(data, {
         header: true,
         complete: function (results) {
             results.data.forEach(function (d) {
+                var container = document.createElement('div');
+                container.classList.add('image-container');
+
                 var img = new Image();
                 img.src = d['Chemin de l\'image'];
                 img.alt = d['Description de l\'image'];
                 img.classList.add("image-responsive");
+
+                var description = document.createElement('div');
+                description.classList.add('image-description');
+                description.textContent = d['Description de l\'image'];
 
                 img.onclick = function () {
                     document.getElementById('modal').style.display = "block";
@@ -30,7 +35,9 @@ function generateImages(data) {
                     document.getElementById("caption").innerHTML = this.alt;
                 };
 
-                imageContainer.appendChild(img);
+                container.appendChild(img);
+                container.appendChild(description);
+                imageContainer.appendChild(container);
             });
         }
     });
