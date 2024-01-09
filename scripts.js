@@ -14,6 +14,9 @@ function generateImages(data) {
         header: true,
         complete: function (results) {
             results.data.forEach(function (d) {
+                if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
+                    return; // Ignorez cette entrée
+                }
                 var container = document.createElement('div');
                 container.classList.add('image-wrapper');
                 container.dataset.tags = d['Tags'];
