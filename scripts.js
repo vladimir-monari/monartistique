@@ -14,7 +14,7 @@ function generateImages(data) {
         header: true,
         complete: function (results) {
             results.data.forEach(function (d) {
-                if (!item['Nom de l\'image'] || !item['Chemin de l\'image']) {
+                if (!d['Nom de l\'image'] || !d['Chemin de l\'image']) {
                     return; // Ignorez cette entrée
                 }
                 var container = document.createElement('div');
