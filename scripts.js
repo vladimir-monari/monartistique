@@ -43,7 +43,7 @@ function generateImages(data) {
                 container.appendChild(img);
                 var descContainer = document.createElement('div');
                 descContainer.classList.add('description-container');
-                descContainer.appendChild(description);
+                descContainer.appendChild(title);
                 img.onload = function () {
                     descContainer.style.maxWidth = `${img.width}px`;
                 };
