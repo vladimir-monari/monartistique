@@ -26,6 +26,10 @@ function generateImages(data) {
                 img.alt = d['Description de l\'image'];
                 img.classList.add("image-responsive");
 
+                var title = document.createElement('div');
+                title.classList.add('image-title');
+                title.textContent = d['Nom de l\'image'];
+
                 var description = document.createElement('div');
                 description.classList.add('image-description');
                 description.textContent = d['Description de l\'image'];

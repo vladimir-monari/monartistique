@@ -104,7 +104,7 @@ div#image-container {
     transition: transform 0.3s ease;
 }
 
-.image-description {
+.image-title {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
