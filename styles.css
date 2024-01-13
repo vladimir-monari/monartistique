@@ -131,6 +131,10 @@ div#image-container {
     max-width: 700px;
 }
 
+div#caption {
+    text-align: center;
+    color: #ffffff;
+}
 .close {
     position: absolute;
     top: 15px;
