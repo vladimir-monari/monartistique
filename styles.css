@@ -134,6 +134,7 @@ div#image-container {
 div#caption {
     text-align: center;
     color: #ffffff;
+    font-size: 1.1em;
 }
 .close {
     position: absolute;
