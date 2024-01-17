@@ -129,8 +129,8 @@ div#image-container {
     display: block;
     max-width: 100vh; /* assure que la largeur de l'image ne dépasse pas celle du conteneur */
     max-height: 90vh; /* assure que la hauteur de l'image ne dépasse pas celle de l'écran */
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
 }
 
 div#caption {
